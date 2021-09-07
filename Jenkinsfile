@@ -10,8 +10,8 @@ pipeline {
       sh "${scannerHome}/bin/sonar-scanner" \
         -Dsonar.projectKey=belt-exam3-sonarqube-jenkins \
         -Dsonar.host.url='http://54.196.235.27:9000' \
-        -D sonar.login=admin \
-        -D sonar.password=Sonar-docker \
+        -Dsonar.login=admin \
+        -Dsonar.password=Sonar-docker \
     }
   }
 }
