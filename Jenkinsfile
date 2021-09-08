@@ -4,9 +4,16 @@ node {
 
         checkout scm
     }
-  stage('SonarQube analysis') {
-    withSonarQubeEnv(credentialsId: 'ca9108e574db4f6fba557413a7edcb29efdf65f0', installationName: 'sonarqube-jenkins') { // You can override the credential to be used
-      sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar'
+  stage('Compile-Package'){
+      // Get maven home path
+      def mvnHome =  tool name: 'maven-3', type: 'maven'   
+      sh "${mvnHome}/bin/mvn package"
+   }
+   
+  stage('SonarQube Analysis') {
+        def mvnHome =  tool name: 'maven-3', type: 'maven'
+        withSonarQubeEnv('sonarqube-jenkins') { 
+          sh "${mvnHome}/bin/mvn sonar:sonar"
+        }
     }
-  }
 }
