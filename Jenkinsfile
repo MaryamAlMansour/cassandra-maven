@@ -1,5 +1,4 @@
-pipeline{
-   agent any
+node{
    stage('SCM Checkout'){
      git 'https://github.com/MaryamAlMansour/cassandra-maven.git'
    }
