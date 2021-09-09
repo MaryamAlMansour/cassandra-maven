@@ -5,11 +5,11 @@ COPY pom.xml ./
 RUN mvn dependency:go-offline
 
 COPY . ./
-RUN mvn package -DfinalName=cassandra-maven
+RUN mvn package -DfinalName=spring-boot-cassandra-0.0.1-SNAPSHOT
 
 FROM openjdk:8-jre-alpine
 EXPOSE 9003
 WORKDIR /app
 
-COPY --from=build-env /app/target/cassandra-maven.jar ./cassandra-maven.jar
+COPY --from=build-env /app/target/spring-boot-cassandra-0.0.1-SNAPSHOT.jar ./spring-boot-cassandra-0.0.1-SNAPSHOT.jar
 CMD ["/usr/bin/java", "-jar", "/app/cassandra-maven.jar"]
