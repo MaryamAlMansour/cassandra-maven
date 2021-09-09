@@ -5,7 +5,6 @@ COPY pom.xml ./
 RUN mvn dependency:go-offline
 
 COPY . ./
-RUN mvn spring-javaformat:apply
 RUN mvn package -DfinalName=cassandra-maven
 
 FROM openjdk:8-jre-alpine
