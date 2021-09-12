@@ -14,6 +14,6 @@ COPY . .
 
 #exposing the web port
 EXPOSE 3000
-ENTRYPOINT ["/docker-entrypoint.sh"]
+
 CMD ["node", "index.js"]
 
