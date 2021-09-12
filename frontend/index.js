@@ -3,7 +3,7 @@ const request = require("request");
 
 const app = express();
 const port = 3000;
-const restApiUrl = process.env.API_URL || 'http://localhost:3000';
+const restApiUrl = process.env.API_URL || 'http://localhost';
 
 app.get("/", function (req, res) {
   request(
